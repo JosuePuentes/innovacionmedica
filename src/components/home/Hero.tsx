@@ -11,16 +11,16 @@ export function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${HERO_BG})` }}
         role="img"
-        aria-label="Quirófano moderno con equipamiento médico"
+        aria-label="Centro de salud con equipamiento médico"
       />
       <div className="absolute inset-0 bg-slate-900/55" />
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-4 py-24 text-center text-white">
         <h1 className="text-balance text-3xl font-extrabold leading-tight tracking-wide sm:text-4xl md:text-5xl">
-          TECNOLOGÍA AVANZADA PARA LA SALUD.
+          DISTRIBUCIÓN INTEGRAL DE INSUMOS Y EQUIPOS MÉDICOS.
         </h1>
         <p className="mt-4 max-w-2xl text-pretty text-base font-medium text-white/90 sm:text-lg">
-          Catálogo integral de insumos y equipos médicos.
+          Llevamos el abasto que tu institución necesita: logística, entrega oportuna y respaldo en cada pedido.
         </p>
         <Link
           to="/portal/acceso"

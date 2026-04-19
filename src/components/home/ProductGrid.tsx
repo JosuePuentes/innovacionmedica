@@ -19,21 +19,6 @@ const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=600&q=80',
   },
-  {
-    name: 'Implantes ortopédicos',
-    image:
-      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    name: 'Implantes y prótesis',
-    image:
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    name: 'Mobiliario clínico',
-    image:
-      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80',
-  },
 ]
 
 export function ProductGrid() {
@@ -50,7 +35,7 @@ export function ProductGrid() {
           Selección de insumos y equipos para hospitales, clínicas y centros de salud.
         </p>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-6">
+        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {products.map((p) => (
             <article
               key={p.name}

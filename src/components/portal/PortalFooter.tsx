@@ -7,12 +7,12 @@ export function PortalFooter() {
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3">
         <div>
           <NovemedLogo variant="footer" />
-          <p className="mt-3 text-sm text-slate-600">Catálogo y logística médica con soporte dedicado.</p>
+          <p className="mt-3 text-sm text-slate-600">Catálogo y distribución de insumos y equipos médicos.</p>
         </div>
         <div>
           <h3 className="text-xs font-extrabold tracking-wide text-slate-900">CONTACTO</h3>
           <ul className="mt-3 space-y-2 text-sm text-slate-600">
-            <li>Av. Principal, Torre Médica, Piso 3. Caracas, Venezuela.</li>
+            <li>Av. Principal, Torre Médica, Piso 3. Maracaibo, Venezuela.</li>
             <li>
               <a href="tel:+582121234567" className="hover:text-novemed-blue">
                 +58 212-1234567

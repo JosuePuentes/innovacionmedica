@@ -25,12 +25,20 @@ const items = [
     ),
   },
   {
-    title: 'SOPORTE TÉCNICO',
-    body: 'Acompañamiento técnico para instalación, capacitación y mantenimiento de equipos médicos.',
+    title: 'ENTREGAS PROGRAMADAS',
+    body: 'Coordinamos surtido y despacho para que hospitales y clínicas reciban insumos y equipos en los plazos acordados.',
     icon: (
       <svg viewBox="0 0 64 64" className="h-10 w-10 text-novemed-blue" fill="none" aria-hidden>
-        <rect x="14" y="18" width="36" height="30" rx="4" stroke="currentColor" strokeWidth="2" />
-        <path d="M22 28h20M22 36h12" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" />
+        <path
+          d="M10 38h6l4-14h26l4 14h6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle cx="22" cy="42" r="4" stroke="currentColor" strokeWidth="2" />
+        <circle cx="44" cy="42" r="4" stroke="currentColor" strokeWidth="2" />
+        <path d="M28 24h14l3 8H25l3-8z" fill="#d32f2f" opacity="0.9" />
       </svg>
     ),
   },
