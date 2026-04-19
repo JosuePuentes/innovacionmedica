@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, NavLink } from 'react-router-dom'
 import { PORTAL_LOGIN_REDIRECT } from '../../lib/portalAccess'
 import { NovemedLogo } from './NovemedLogo'
@@ -30,9 +31,78 @@ export function Header() {
 
   const closeMenu = () => setMenuOpen(false)
 
+  const menuPanel =
+    menuOpen &&
+    createPortal(
+      <div
+        id="menu-movil-novemed"
+        className="fixed inset-0 z-[200] flex min-h-0 min-w-0 flex-col bg-white xl:hidden"
+        style={{
+          paddingTop: 'env(safe-area-inset-top, 0px)',
+          paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+        }}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menú de navegación"
+      >
+        <div className="flex shrink-0 items-center justify-between border-b border-slate-100 px-4 py-3">
+          <Link to="/" onClick={closeMenu}>
+            <NovemedLogo />
+          </Link>
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-700"
+            aria-label="Cerrar menú"
+            onClick={closeMenu}
+          >
+            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+        <nav
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-2 pb-8"
+          aria-label="Móvil"
+        >
+          <div className="flex flex-col gap-1">
+            {nav.map((item) =>
+              item.requiresLogin ? (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  state={PORTAL_LOGIN_REDIRECT}
+                  onClick={closeMenu}
+                  className="flex min-h-[52px] items-center rounded-xl px-4 text-base font-bold tracking-wide text-slate-800 hover:bg-sky-50 hover:text-novemed-blue active:bg-sky-50"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <NavLink
+                  key={item.label}
+                  to={item.to}
+                  end={Boolean(item.end)}
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    [
+                      'flex min-h-[52px] items-center rounded-xl px-4 text-base font-bold tracking-wide',
+                      isActive ? 'bg-sky-50 text-novemed-blue' : 'text-slate-800 hover:bg-sky-50 hover:text-novemed-blue',
+                    ].join(' ')
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ),
+            )}
+          </div>
+        </nav>
+      </div>,
+      document.body,
+    )
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 shadow-sm backdrop-blur">
-      <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-3 lg:py-4">
+    <>
+      <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 shadow-sm backdrop-blur">
+        <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-3 lg:py-4">
         <Link to="/" className="min-w-0 shrink" onClick={closeMenu}>
           <NovemedLogo />
         </Link>
@@ -97,63 +167,9 @@ export function Header() {
             )}
           </button>
         </div>
-      </div>
-
-      {menuOpen ? (
-        <div
-          id="menu-movil-novemed"
-          className="fixed inset-0 z-[100] flex flex-col bg-white xl:hidden"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menú de navegación"
-        >
-          <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
-            <Link to="/" onClick={closeMenu}>
-              <NovemedLogo />
-            </Link>
-            <button
-              type="button"
-              className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-700"
-              aria-label="Cerrar menú"
-              onClick={closeMenu}
-            >
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
-          <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-4 pb-10" aria-label="Móvil">
-            {nav.map((item) =>
-              item.requiresLogin ? (
-                <Link
-                  key={item.label}
-                  to={item.to}
-                  state={PORTAL_LOGIN_REDIRECT}
-                  onClick={closeMenu}
-                  className="flex min-h-[52px] items-center rounded-xl px-4 text-base font-bold tracking-wide text-slate-800 hover:bg-sky-50 hover:text-novemed-blue active:bg-sky-50"
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <NavLink
-                  key={item.label}
-                  to={item.to}
-                  end={Boolean(item.end)}
-                  onClick={closeMenu}
-                  className={({ isActive }) =>
-                    [
-                      'flex min-h-[52px] items-center rounded-xl px-4 text-base font-bold tracking-wide',
-                      isActive ? 'bg-sky-50 text-novemed-blue' : 'text-slate-800 hover:bg-sky-50 hover:text-novemed-blue',
-                    ].join(' ')
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              ),
-            )}
-          </nav>
         </div>
-      ) : null}
-    </header>
+      </header>
+      {menuPanel}
+    </>
   )
 }
