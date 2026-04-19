@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { PORTAL_LOGIN_REDIRECT } from '../../lib/portalAccess'
 import { NovemedLogo } from './NovemedLogo'
 
 const social = [
@@ -80,9 +82,13 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="/portal/acceso" className="font-semibold text-novemed-blue hover:underline">
-                Portal cliente
-              </a>
+              <Link
+                to="/portal/acceso"
+                state={PORTAL_LOGIN_REDIRECT}
+                className="font-semibold text-novemed-blue hover:underline"
+              >
+                Iniciar sesión
+              </Link>
             </li>
           </ul>
         </div>

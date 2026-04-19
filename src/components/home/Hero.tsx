@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom'
+import { PORTAL_LOGIN_REDIRECT } from '../../lib/portalAccess'
+
 const HERO_BG =
   'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=2000&q=80'
 
@@ -19,12 +22,13 @@ export function Hero() {
         <p className="mt-4 max-w-2xl text-pretty text-base font-medium text-white/90 sm:text-lg">
           Catálogo integral de insumos y equipos médicos.
         </p>
-        <a
-          href="#catalogo"
+        <Link
+          to="/portal/acceso"
+          state={PORTAL_LOGIN_REDIRECT}
           className="mt-10 inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-bold tracking-wide text-slate-900 shadow-lg transition hover:bg-slate-100"
         >
           VER CATÁLOGO COMPLETO
-        </a>
+        </Link>
       </div>
 
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 translate-y-px">

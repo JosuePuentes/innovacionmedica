@@ -47,11 +47,9 @@ export function PortalLoginPage() {
 
       <main className="flex flex-1 items-center justify-center px-4 py-12">
         <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-lg ring-1 ring-slate-100">
-          <h1 className="text-center text-lg font-extrabold tracking-wide text-slate-900">
-            PORTAL DEL CLIENTE
-          </h1>
+          <h1 className="text-center text-lg font-extrabold tracking-wide text-slate-900">INICIAR SESIÓN</h1>
           <p className="mt-2 text-center text-sm text-slate-600">
-            Accede con tu correo corporativo. La autenticación es una demostración local (sin backend).
+            Introduce tu correo y contraseña para acceder al catálogo y a tu cuenta.
           </p>
 
           <form className="mt-8 space-y-4" onSubmit={onSubmit}>
@@ -91,16 +89,9 @@ export function PortalLoginPage() {
               disabled={busy}
               className="w-full rounded-full bg-novemed-blue py-3 text-sm font-bold text-white transition hover:bg-novemed-blue-deep disabled:opacity-60"
             >
-              {busy ? 'Entrando…' : 'Entrar'}
+              {busy ? 'Entrando…' : 'Iniciar sesión'}
             </button>
           </form>
-
-          <p className="mt-6 text-center text-xs text-slate-500">
-            ¿Administración?{' '}
-            <Link className="font-semibold text-novemed-blue hover:underline" to="/admin/acceso">
-              Ir al acceso admin
-            </Link>
-          </p>
         </div>
       </main>
     </div>
